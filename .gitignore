@@ -31,5 +31,12 @@
 *.out
 *.app
 
+# Ignore Bazel out
+bazel-bin/
+bazel-out/
+bazel-Quadcopter
+bazel-testlogs
+
+
 # Ignore other repos
 ModuleFramework/
