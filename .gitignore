@@ -32,8 +32,8 @@
 *.app
 
 # Ignore Bazel out
-bazel-bin/
-bazel-out/
+bazel-bin
+bazel-out
 bazel-Quadcopter
 bazel-testlogs
 
