@@ -1,6 +1,6 @@
 #include "controls_module.h"
-#include "sensor_module.h"
 #include "guidance_module.h"
+#include "navigation_module.h"
 
 #include <map>
 #include <math.h>
@@ -17,10 +17,10 @@ void Onboard::ControlsModule::Init(std::shared_ptr<ModuleDataCollection> data) {
 }
 
 void Onboard::ControlsModule::Poll(std::shared_ptr<ModuleDataCollection> data) {
-  VectorXd x = data->GetModuleData<SensorModuleData>("sensor_data").x;
-  VectorXd v = data->GetModuleData<SensorModuleData>("sensor_data").v;
-  MatrixXd R = data->GetModuleData<SensorModuleData>("sensor_data").R;
-  VectorXd W = data->GetModuleData<SensorModuleData>("sensor_data").W;
+  VectorXd x = data->GetModuleData<NavigationModuleData>("navigation_data").x;
+  VectorXd v = data->GetModuleData<NavigationModuleData>("navigation_data").v;
+  MatrixXd R = data->GetModuleData<NavigationModuleData>("navigation_data").R;
+  VectorXd W = data->GetModuleData<NavigationModuleData>("navigation_data").W;
   VectorXd xd = data->GetModuleData<GuidanceModuleData>("guidance_data").xd;
 
   std::map<std::string, VectorXd> controller_inputs;

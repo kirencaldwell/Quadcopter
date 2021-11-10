@@ -7,7 +7,7 @@
 
 void Onboard::GuidanceModule::Init(std::shared_ptr<ModuleDataCollection> data) {
 	_module_name = "Guidance Module";
-	_module_period_ms = std::chrono::milliseconds(50);
+	_module_period_ms = std::chrono::milliseconds(1);
 
 	VectorXd b1d(3);
 	b1d << 1, 0, 0;
