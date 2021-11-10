@@ -1,8 +1,5 @@
 #include "quadcopter_model.h"
 
-// hat map
-// TODO: kirencaldwell - move this somewhere more useful
-
 void Simulation::QuadcopterModel::Init() {
   // intialize constants
   _moment_of_inertia << 0.0820, 0, 0,
@@ -21,6 +18,9 @@ void Simulation::QuadcopterModel::Init() {
   // initialize outputs
   _output["x"] = VectorXd::Zero(3);
   _output["v"] = VectorXd::Zero(3);
+  _output["vdot"] = VectorXd::Zero(3);
+  _output["R"] = MatrixXd::Identity(3,3).reshaped(9,1);
+  _output["W"] = VectorXd::Zero(3);
 }
 
 void Simulation::QuadcopterModel::UpdateStates(std::map<std::string, VectorXd> input, double dt) {
@@ -73,7 +73,17 @@ std::map<std::string, VectorXd> Simulation::QuadcopterModel::StateOde(
 std::map<std::string, VectorXd> Simulation::QuadcopterModel::MeasurementFunction(
     std::map<std::string, VectorXd> x, std::map<std::string, VectorXd> u) {
   auto y = _output;
+
+  VectorXd e3(3);
+  e3 << 0, 0, 1;
+  double g = 9.81;
+
+  MatrixXd R = x["R"].reshaped(3,3);
+  double f = u["f"](0);
+  y["vdot"] = (1/_mass) * (_mass*g*e3 - f*R*e3);
   y["x"] = x["x"];
   y["v"] = x["v"];
+  y["R"] = x["R"];
+  y["W"] = x["W"];
   return y;
 }

@@ -7,6 +7,7 @@
 
 #include "external/ConcurrentModuleFramework/src/base_module.h"
 #include "quadcopter_model.h"
+#include "gyroscope_model.h"
 #include "Onboard/sensor_module.h"
 #include "Onboard/controls_module.h"
 
@@ -21,6 +22,7 @@ class SimulationModuleData {
     VectorXd v;
     MatrixXd R;
     VectorXd W;
+    VectorXd vdot;
     double t;
 };
 
@@ -33,6 +35,7 @@ class SimulationModule : public BaseModule {
     SimulationModuleData _simulation_data;
     Onboard::SensorModuleData _sensor_data;
     QuadcopterModel _quadcopter;
+    GyroscopeModel _gyroscope;
 };
 
 } // Simulation
