@@ -1,9 +1,12 @@
 #include "generic_ode_model.h"
+#include <iostream>
 
 // Initialization step, to be filled in by specific model
 void GenericOdeModel::Init() {
+  _parameters["m"] = ModelParameter(1, 0.2, false);
   _states["x"] = VectorXd::Ones(3);
   _output["x_out"] = VectorXd::Ones(3);
+
 }
 
 void GenericOdeModel::UpdateStates(std::map<std::string, VectorXd> input, double dt) {
@@ -18,7 +21,7 @@ void GenericOdeModel::UpdateStates(std::map<std::string, VectorXd> input, double
 std::map<std::string, VectorXd> GenericOdeModel::StateOde(
     std::map<std::string, VectorXd> x, std::map<std::string, VectorXd> u) {
   auto state_dot = x;
-  state_dot["x"] = u["u"];
+  state_dot["x"] = u["u"]/_parameters["m"].GetScalar();
   return state_dot;
 }
 

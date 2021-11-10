@@ -4,6 +4,7 @@
 #include <map>
 #include <eigen3/Eigen/Dense>
 #include <iostream>
+#include "model_parameter.h"
 
 using Eigen::VectorXd;
 using Eigen::MatrixXd;
@@ -13,8 +14,11 @@ class GenericOdeModel {
   public:
     virtual void Init();
 
+    void InitParameters(bool monte_carlo_flag);
+
     virtual void UpdateStates(std::map<std::string, VectorXd> input, double dt);
     void UpdateOutput(std::map<std::string, VectorXd> input);
+    std::map<std::string, ModelParameter> GetParameters() {return _parameters;};
     std::map<std::string, VectorXd> GetOutput();
     std::map<std::string, VectorXd> GetStates();
     // TODO: kirencaldwell - implement this
@@ -26,6 +30,7 @@ class GenericOdeModel {
     virtual std::map<std::string, VectorXd> MeasurementFunction(
             std::map<std::string, VectorXd> x, std::map<std::string, VectorXd> u);
 
+    std::map<std::string, ModelParameter> _parameters;
     std::map<std::string, VectorXd> _states;
     std::map<std::string, VectorXd> _output;
 };
