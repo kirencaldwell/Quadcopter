@@ -1,12 +1,9 @@
 #ifndef CONTROLS_MODULE_H 
 #define CONTROLS_MODULE_H
 
-#include <map>
 #include <eigen3/Eigen/Dense>
-#include <memory>
 
 #include "external/ConcurrentModuleFramework/src/base_module.h"
-#include "sensor_module.h"
 #include "controller.h"
 
 using Eigen::VectorXd;

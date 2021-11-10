@@ -5,11 +5,13 @@ cc_library(
     srcs = [
             "controller.cc",
             "controls_module.cc",
+            "guidance_module.cc",
             "telemetry_logging_module.cc",
             ],
     hdrs = [
             "controller.h",
             "controls_module.h",
+            "guidance_module.h",
             "telemetry_logging_module.h",
             "sensor_module.h",
             ],
