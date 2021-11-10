@@ -1,4 +1,5 @@
 #include "Simulation/simulation_module.h"
+#include "Onboard/controls_module.h"
 
 void Simulation::SimulationModule::Init(std::shared_ptr<ModuleDataCollection> data) {
   // intialize simulation

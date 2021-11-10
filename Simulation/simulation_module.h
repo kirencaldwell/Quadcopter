@@ -9,7 +9,6 @@
 #include "quadcopter_model.h"
 #include "gyroscope_model.h"
 #include "Onboard/sensor_module.h"
-#include "Onboard/controls_module.h"
 
 using Eigen::VectorXd;
 using Eigen::MatrixXd;
