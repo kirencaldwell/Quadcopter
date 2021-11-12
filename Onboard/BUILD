@@ -7,15 +7,12 @@ cc_library(
             "controls_module.cc",
             "guidance_module.cc",
             "navigation_module.cc",
-            "telemetry_logging_module.cc",
             ],
     hdrs = [
             "controller.h",
             "controls_module.h",
             "guidance_module.h",
             "navigation_module.h",
-            "telemetry_logging_module.h",
-            "sensor_module.h",
             ],
     deps = [
             "//ControlsToolbox:generic_ode_model",
