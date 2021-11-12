@@ -7,12 +7,14 @@ cc_library(
             "gyroscope_model.cc",
             "simulation_module.cc",
             "sensor_module.cc",
+            "gyroscope_module.cc",
             ],
     hdrs = [
             "quadcopter_model.h",
             "gyroscope_model.h",
             "simulation_module.h",
             "sensor_module.h",
+            "gyroscope_module.h",
             ],
     deps = [
             "//ControlsToolbox:generic_ode_model",

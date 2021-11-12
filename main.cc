@@ -10,6 +10,7 @@
 #include "Onboard/navigation_module.h"
 #include "Simulation/simulation_module.h"
 #include "Simulation/sensor_module.h"
+#include "Simulation/gyroscope_module.h"
 
 int main() {
 
@@ -21,6 +22,7 @@ int main() {
     new Simulation::SimulationModule);
   std::unique_ptr<BaseModule> sensor_module(
     new Simulation::SensorModule);
+  std::unique_ptr<BaseModule> gyroscope_module(new Simulation::GyroscopeModule);
 
   ModuleManager manager;
   manager.AddModule(std::move(controls_module));
@@ -28,6 +30,7 @@ int main() {
   manager.AddModule(std::move(navigation_module));
   manager.AddModule(std::move(simulation_module));
   manager.AddModule(std::move(sensor_module));
+  manager.AddModule(std::move(gyroscope_module));
 
   manager.InitModules();
 

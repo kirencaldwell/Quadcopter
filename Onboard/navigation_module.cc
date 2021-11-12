@@ -23,7 +23,7 @@ void NavigationModule::Poll(std::shared_ptr<ModuleDataCollection> data) {
     VectorXd x = data->GetModuleData("sensor_module").Get<VectorXd>("x");
     VectorXd v = data->GetModuleData("sensor_module").Get<VectorXd>("v");
     MatrixXd R = data->GetModuleData("sensor_module").Get<MatrixXd>("R");
-    VectorXd W = data->GetModuleData("sensor_module").Get<VectorXd>("W");
+    VectorXd W = data->GetModuleData("gyroscope_module").Get<VectorXd>("W");
 
 	_module_data.Set<VectorXd>("x", x);
 	_module_data.Set<VectorXd>("v", v);
