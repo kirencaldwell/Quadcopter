@@ -15,6 +15,7 @@ ControlsModule::ControlsModule() {
   _controller.Init(); 
   _module_data.Add<VectorXd>("f", VectorXd::Zero(1));
   _module_data.Add<VectorXd>("M", VectorXd::Zero(3));
+  _module_data.Add<MatrixXd>("Rd", MatrixXd::Identity(3,3));
 
 }
 
@@ -38,6 +39,7 @@ void ControlsModule::Poll(std::shared_ptr<ModuleDataCollection> data) {
   auto controller_output = _controller.GetOutput();
   _module_data.Set<VectorXd>("f", controller_output["f"]);
   _module_data.Set<VectorXd>("M", controller_output["M"]);
+  _module_data.Set<MatrixXd>("Rd", controller_output["Rd"]);
 
 }
 }
