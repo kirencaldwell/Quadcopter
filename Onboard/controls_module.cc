@@ -10,7 +10,7 @@ using Eigen::VectorXd;
 namespace Onboard {
 ControlsModule::ControlsModule() {
   _module_name = "controls_module";
-  _module_period_ms = std::chrono::milliseconds(1);
+  _module_period_ms = std::chrono::milliseconds(10);
  
   _controller.Init(); 
   _module_data.Add<VectorXd>("f", VectorXd::Zero(1));

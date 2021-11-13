@@ -11,7 +11,7 @@ using Eigen::MatrixXd;
 namespace Simulation {
 GyroscopeModule::GyroscopeModule() {
 	_module_name = "gyroscope_module";
-    _module_period_ms = std::chrono::milliseconds(1);
+    _module_period_ms = std::chrono::milliseconds(5);
 
 	_module_data.Add<VectorXd>("W", VectorXd::Zero(3));
 	_module_data.Add<double>("t", 0);

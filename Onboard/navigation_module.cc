@@ -9,7 +9,7 @@
 namespace Onboard { 
 NavigationModule::NavigationModule() {
 	_module_name = "navigation_module";
-	_module_period_ms = std::chrono::milliseconds(1);
+	_module_period_ms = std::chrono::milliseconds(10);
 
 
 	_module_data.Add<VectorXd>("x", VectorXd::Zero(3));

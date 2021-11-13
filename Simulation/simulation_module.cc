@@ -13,16 +13,11 @@ SimulationModule::SimulationModule() {
   // initialize quadcopter
   _quadcopter.Init();
   // get initial states
-  // VectorXd Rv = _quadcopter.GetStates()["R"];
-  // MatrixXd R = Rv.reshaped(3,3);
-  // _module_data.Add<VectorXd>("x", _quadcopter.GetStates()["x"]);
-  // _module_data.Add<VectorXd>("v", _quadcopter.GetStates()["v"]);
-  // _module_data.Add<MatrixXd>("R", R);
-  // _module_data.Add<VectorXd>("W", _quadcopter.GetStates()["W"]);
   _module_data.Add<VectorXd>("x", VectorXd::Zero(3));
   _module_data.Add<VectorXd>("v", VectorXd::Zero(3));
   _module_data.Add<MatrixXd>("R", MatrixXd::Identity(3,3));
   _module_data.Add<VectorXd>("W", VectorXd::Zero(3));
+  _module_data.Add<VectorXd>("vdot", VectorXd::Zero(3));
   _module_data.Add<double>("t", 0);
 
 

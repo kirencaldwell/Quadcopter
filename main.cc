@@ -11,6 +11,7 @@
 #include "Simulation/simulation_module.h"
 #include "Simulation/sensor_module.h"
 #include "Simulation/gyroscope_module.h"
+#include "Simulation/accelerometer_module.h"
 
 int main() {
 
@@ -23,6 +24,7 @@ int main() {
   std::unique_ptr<BaseModule> sensor_module(
     new Simulation::SensorModule);
   std::unique_ptr<BaseModule> gyroscope_module(new Simulation::GyroscopeModule);
+  std::unique_ptr<BaseModule> accelerometer_module(new Simulation::AccelerometerModule);
 
   ModuleManager manager;
   manager.AddModule(std::move(controls_module));
@@ -31,6 +33,7 @@ int main() {
   manager.AddModule(std::move(simulation_module));
   manager.AddModule(std::move(sensor_module));
   manager.AddModule(std::move(gyroscope_module));
+  manager.AddModule(std::move(accelerometer_module));
 
   manager.InitModules();
 

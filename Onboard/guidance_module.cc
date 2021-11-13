@@ -10,7 +10,7 @@ using Eigen::VectorXd;
 namespace Onboard {
 GuidanceModule::GuidanceModule() {
 	_module_name = "guidance_module";
-	_module_period_ms = std::chrono::milliseconds(1);
+	_module_period_ms = std::chrono::milliseconds(10);
 
 	VectorXd b1d(3);
 	b1d << 1, 0, 0;
