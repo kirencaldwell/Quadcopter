@@ -9,17 +9,18 @@ using Eigen::VectorXd;
 using Eigen::MatrixXd;
 
 TEST(ModelParameters, BasicStuff) {
-    ModelParameter mc_scalar(1, 2, true);
-    ModelParameter scalar(1, 2, false);
-    ModelParameter mc_vector(VectorXd::Ones(3), MatrixXd::Identity(3,3), true);
-    ModelParameter vector(VectorXd::Ones(3), MatrixXd::Identity(3,3), false);
+    ModelParameter parameters;
+    parameters.AddParameter("mc_scalar", 1, 2, true);
+    parameters.AddParameter("scalar", 1, 2, false);
+    parameters.AddParameter("mc_vector", VectorXd::Ones(3), MatrixXd::Identity(3,3), true);
+    parameters.AddParameter("vector", VectorXd::Ones(3), MatrixXd::Identity(3,3), false);
 
-    EXPECT_EQ(scalar.GetScalar(), 1);
-    EXPECT_EQ(vector.GetVector(), VectorXd::Ones(3));
+    EXPECT_EQ(parameters.Get<double>("scalar"), 1);
+    EXPECT_EQ(parameters.Get<VectorXd>("vector"), VectorXd::Ones(3));
 
     // expect scalar to be between +/- 4 sigma
-    EXPECT_GT(mc_scalar.GetScalar(), -7);
-    EXPECT_LT(mc_scalar.GetScalar(), 9);
+    EXPECT_GT(parameters.Get<double>("scalar"), -7);
+    EXPECT_LT(parameters.Get<double>("scalar"), 9);
 
     // TODO: kirencaldwell - create tests for true variance in distributions
 }

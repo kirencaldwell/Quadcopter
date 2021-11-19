@@ -3,25 +3,18 @@
 
 #include <eigen3/Eigen/Dense>
 #include <iostream>
-#include <any>
+#include <string>
+#include "named_vector.h"
 
 using Eigen::VectorXd;
 using Eigen::MatrixXd;
 
-class ModelParameter {
+class ModelParameter : public NamedVector {
     public:
-        ModelParameter() {};
-        ModelParameter(double value, double variance, bool monte_carlo_flag);
-        ModelParameter(VectorXd value, MatrixXd variance, bool monte_carlo_flag);
+        // ModelParameter();
+        void AddParameter(std::string name, double value, double variance, bool monte_carlo_flag);
+        void AddParameter(std::string name, VectorXd value, MatrixXd variance, bool monte_carlo_flag);
 
-        double GetScalar() {return _dvalue;};
-        VectorXd GetVector() {return _vvalue;};
-
-    protected:
-        double _dvalue;
-        double _dvariance;
-        VectorXd _vvalue;
-        MatrixXd _vvariance;
 };
 
 #endif
